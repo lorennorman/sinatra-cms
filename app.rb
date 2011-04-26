@@ -29,5 +29,5 @@ end
 
 ### Pass a test ###
 get '/' do
-  'Installation Instructions'
+  'Installation Instructions: Step 1 <input id="environment" type="text"></input><input id="domain_name" type="text"></input>'
 end
