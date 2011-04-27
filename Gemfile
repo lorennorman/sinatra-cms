@@ -12,7 +12,7 @@ gem 'coffee-script'
 
 
 group :test do
-  # Background server for speed
+  # Background test server for speedier runs
   gem 'spork', '~> 0.9.0.rc'
 
   # Frameworks
@@ -23,11 +23,12 @@ group :test do
 end
 
 group :guard do
-  # File watcher for autotesting
+  # File watcher for instant, effortless test feedback
   gem 'rb-fsevent'
   gem 'growl'
   gem 'guard'
-  gem 'guard-spork'
-  gem 'guard-rspec'
-  gem 'guard-cucumber'
+  gem 'guard-pow'      # when to restart the dev environment?
+  gem 'guard-spork'    # when to restart the test environment?
+  gem 'guard-rspec'    # when to run the specs?
+  gem 'guard-cucumber' # when to run the stories?
 end

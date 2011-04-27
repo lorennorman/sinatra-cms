@@ -22,6 +22,8 @@ GEM
     guard-cucumber (0.3.0)
       cucumber (~> 0.10.0)
       guard (~> 0.3.0)
+    guard-pow (0.1.0)
+      guard (>= 0.3.0)
     guard-rspec (0.3.0)
       guard (>= 0.2.2)
     guard-spork (0.1.10)
@@ -64,6 +66,7 @@ DEPENDENCIES
   growl
   guard
   guard-cucumber
+  guard-pow
   guard-rspec
   guard-spork
   haml

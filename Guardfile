@@ -16,3 +16,12 @@ guard 'spork' do
   watch('spec/spec_helper.rb')
   watch('features/support/env.rb')
 end
+
+guard 'pow' do
+  watch('.powrc')
+  watch('.powenv')
+  watch('.rvmrc')
+  watch('Gemfile')
+  watch('Gemfile.lock')
+  watch('app.rb')
+end
