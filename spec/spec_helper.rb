@@ -1,15 +1,25 @@
-ENV['RACK_ENV'] = 'test'
-
 require 'rubygems'
-require 'bundler'
-Bundler.setup
+require 'spork'
 
-require 'rack/test'
-require_relative '../app.rb'
+Spork.prefork do
+  ENV['RACK_ENV'] = 'test'
 
-module RSpecMixinExample
-  include Rack::Test::Methods
-  def app() Sinatra::Application end
+  require 'bundler'
+  Bundler.setup
+
+  require 'rack/test'
+  require_relative '../app.rb'
+
+  module RSpecMixinExample
+    include Rack::Test::Methods
+    def app() Sinatra::Application end
+  end
+
+
+  require 'rspec'
+  RSpec.configure { |c| c.include RSpecMixinExample }
 end
 
-RSpec.configure { |c| c.include RSpecMixinExample }
+Spork.each_run do
+
+end

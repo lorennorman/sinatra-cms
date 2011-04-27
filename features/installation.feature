@@ -11,6 +11,7 @@ Feature: Install the CMS
     When I visit 'sinatra-cms.dev'
     Then I should get a success
 
+  @wip
   Scenario: First-run Installation Wizard
     Given I visit the site
     Then I should see "Installation Instructions: Step 1"

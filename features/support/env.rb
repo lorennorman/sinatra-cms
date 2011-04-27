@@ -1,28 +1,37 @@
-ENV['RACK_ENV'] = 'test'
-
 require 'rubygems'
-require 'bundler'
-Bundler.setup
+require 'spork'
 
-require 'rack/test'
-require 'rspec/expectations'
-require 'webrat'
-require_relative '../../app.rb'
+Spork.prefork do
+  ENV['RACK_ENV'] = 'test'
 
-Webrat.configure do |config|
-  config.mode = :rack
-end
+  require 'rubygems'
+  require 'bundler'
+  Bundler.setup
 
-class WebratMixinExample
-  include Rack::Test::Methods
-  include Webrat::Methods
-  include Webrat::Matchers
+  require 'rack/test'
+  require 'rspec/expectations'
+  require 'webrat'
+  require_relative '../../app.rb'
 
-  Webrat::Methods.delegate_to_session :response_code, :response_body
-
-  def app
-    Sinatra::Application
+  Webrat.configure do |config|
+    config.mode = :rack
   end
+
+  class WebratMixinExample
+    include Rack::Test::Methods
+    include Webrat::Methods
+    include Webrat::Matchers
+
+    Webrat::Methods.delegate_to_session :response_code, :response_body
+
+    def app
+      Sinatra::Application
+    end
+  end
+
+  World{WebratMixinExample.new}
 end
 
-World{WebratMixinExample.new}
+Spork.each_run do
+
+end
