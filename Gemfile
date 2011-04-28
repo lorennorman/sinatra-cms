@@ -30,5 +30,6 @@ group :guard do
   gem 'guard-pow'      # when to restart the dev environment?
   gem 'guard-spork'    # when to restart the test environment?
   gem 'guard-rspec'    # when to run the specs?
-  gem 'guard-cucumber' # when to run the stories?
+  # when to run the stories?
+  gem 'guard-cucumber', :git => "https://github.com/lorennorman/guard-cucumber"
 end

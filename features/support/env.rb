@@ -25,7 +25,7 @@ Spork.prefork do
     Webrat::Methods.delegate_to_session :response_code, :response_body
 
     def app
-      Sinatra::Application
+      SinatraCMS
     end
   end
 

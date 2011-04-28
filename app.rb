@@ -29,6 +29,6 @@ class SinatraCMS < Sinatra::Base
 
   ### Pass a test ###
   get '/' do
-    'Installation Instructions: Step 1 <input id="environment" type="text"></input><input id="domain_name" type="text"></input>'
+    'Install: Step 1/3 <input id="environment" type="text"></input><input id="domain_name" type="text"></input>'
   end
 end

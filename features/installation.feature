@@ -15,13 +15,13 @@ Feature: Install the CMS
   @wip
   Scenario: First-run Installation Wizard
     Given I visit the site
-    Then I should see "Installation Instructions: Step 1"
-    When I fill in and submit this basic User Registration Form
-    Then I should see "Installation Instructions: Step 2"
+    Then I should see "Install: Step 1/3"
+    When I fill in and submit this "user registration" form
+    Then I should see "Install: Step 2/3"
     When I set "environment" to "development"
     And I set "domain_name" to "sinatra-cms.dev"
     And I press "Next Step"
-    Then I should see "Installation Instructions: Step 3"
+    Then I should see "Install: Step 3/3"
     And I should see "Browse Factories"
     And I should see "Browse Themes"
     And I should see "Go To Admin"

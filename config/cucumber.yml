@@ -1,4 +1,4 @@
 default: --profile wip
 
-<% common = "--tags ~@skip --drb" %>
+<% common = "--tags ~@skip --format pretty --drb" %>
 wip: <%= common %> --tags @wip
