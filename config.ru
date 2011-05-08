@@ -1,2 +1,2 @@
 require './app'
-run SinatraCMS
+run CMS::Installer
