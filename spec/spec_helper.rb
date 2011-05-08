@@ -12,12 +12,19 @@ Spork.prefork do
 
   module RSpecMixinExample
     include Rack::Test::Methods
-    def app() SinatraCMS end
+
+    def app
+      RSpec.configuration.app_to_test || CMS::Installer
+    end
   end
 
-
   require 'rspec'
-  RSpec.configure { |c| c.include RSpecMixinExample }
+  RSpec.configure do |config|
+    config.include RSpecMixinExample
+
+    # Allows tests to choose which CMS::App they test
+    config.add_setting :app_to_test
+  end
 end
 
 Spork.each_run do

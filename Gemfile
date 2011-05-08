@@ -7,8 +7,9 @@ gem "sinatra"
 ###############################
 # gem 'erb'
 gem 'haml'
-gem 'sass'
 gem 'coffee-script'
+gem 'sass'
+gem 'compass'
 
 
 group :test do

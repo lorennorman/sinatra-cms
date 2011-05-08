@@ -4,31 +4,44 @@ Bundler.setup(:default)
 
 require 'sinatra/base'
 
-class SinatraCMS < Sinatra::Base
-  ### Prove Sass works ###
-  require 'sass'
+module CMS
+  class Installer < Sinatra::Base
+    require 'haml'
+    require 'coffee-script'
+    require 'sass'
+    require 'compass'
 
-  get '/style.css' do
-    scss :style
+    configure do
+      set :views, File.dirname(__FILE__) + '/views/admin'
+
+      Compass.configuration do |config|
+        config.project_path = File.dirname(__FILE__)
+        config.sass_dir = 'views/admin/stylesheets'
+      end
+
+      set :haml, :format => :html5
+      set :scss, Compass.sass_engine_options
+    end
+
+    ### Prove Sass works ###
+    get '/admin.css' do
+      scss :admin
+    end
+
+    ### Prove CoffeeScript works ###
+    get '/application.js' do
+      coffee :application
+    end
+
+    ### Pass a test ###
+    get '/install' do
+      'Install: Step 1/3 <input id="environment" type="text"></input><input id="domain_name" type="text"></input>'
+    end
   end
 
-  ### Prove CoffeeScript works ###
-  require 'coffee-script'
-
-  get '/application.js' do
-    coffee :application
-  end
-
-  ### Prove Haml works, includes the others ###
-  require 'haml'
-  set :haml, :format => :html5 # default Haml format is :xhtml
-
-  get '/about' do
-    haml :about
-  end
-
-  ### Pass a test ###
-  get '/' do
-    'Install: Step 1/3 <input id="environment" type="text"></input><input id="domain_name" type="text"></input>'
+  class Admin < Sinatra::Base
+    get '/admin' do
+      "admin"
+    end
   end
 end
